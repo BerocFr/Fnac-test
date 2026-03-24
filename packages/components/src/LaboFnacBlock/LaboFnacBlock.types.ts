@@ -5,6 +5,7 @@ export interface LaboSpec {
 export interface LaboFnacBlockProps {
   score?: number;
   title?: string;
+  compareHref?: string;
   specs?: LaboSpec[];
   pointsForts?: string[];
   className?: string;

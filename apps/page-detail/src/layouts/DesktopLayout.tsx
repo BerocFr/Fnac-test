@@ -96,11 +96,33 @@ export default function DesktopLayout() {
             {/* Gallery: thumbnails left + main image */}
             <Gallery images={mockProduct.images} device="desktop" />
 
-            {/* Legal notices */}
-            <LegalNoticesBlock items={[
-              { label: 'Indice de réparabilité : 8.2/10', href: '#' },
-              { label: 'Classe énergétique : A', href: '#' },
-            ]} />
+            {/* Legal notices — 3 blocs côte à côte */}
+            <div className="flex items-start gap-6 px-2 pt-1">
+              {/* Chargeur non fourni */}
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-1">
+                  <span className="text-xs text-text-secondary">Chargeur non fourni</span>
+                  <svg className="w-3.5 h-3.5 text-text-tertiary flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
+                    <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                    <text x="8" y="12" textAnchor="middle" fontSize="9" fontWeight="bold" fill="currentColor">i</text>
+                  </svg>
+                </div>
+              </div>
+              {/* Indice de réparabilité */}
+              <div className="flex flex-col items-center gap-1">
+                <span className="text-xs text-text-secondary text-center">Indice de<br/>réparabilité</span>
+                <div className="flex items-center justify-center w-10 h-10 rounded-md bg-[#2E7D32] text-white">
+                  <span className="text-sm font-bold">8</span>
+                </div>
+              </div>
+              {/* Note énergétique */}
+              <div className="flex flex-col items-center gap-1">
+                <span className="text-xs text-text-secondary text-center">Note<br/>énergétique</span>
+                <div className="flex items-center justify-center w-10 h-10 rounded-md bg-[#4CAF50] text-white">
+                  <span className="text-sm font-bold">A</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* ── RIGHT COLUMN (middle): white cards, col gap-12 ── */}
@@ -266,6 +288,7 @@ export default function DesktopLayout() {
           <LaboFnacBlock
             score={mockProduct.laboScore}
             title="Apple iPhone 17 Pro — notre verdict"
+            compareHref="#comparatif"
             specs={mockProduct.laboSpecs}
             pointsForts={mockProduct.laboPointsForts}
           />
@@ -294,7 +317,7 @@ export default function DesktopLayout() {
           {/* Reviews section */}
           <section id="avis" className="bg-surface-default px-14 py-8 flex flex-col gap-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-text-primary">Avis clients</h2>
+              <h2 className="text-xl font-bold text-text-primary">Avis client</h2>
               <button className="text-sm font-bold text-brand-primary hover:underline">
                 Donner mon avis
               </button>
@@ -325,10 +348,10 @@ export default function DesktopLayout() {
             </div>
           </section>
 
-          {/* UpSell: Produits similaires */}
+          {/* UpSell: Les internautes ont aussi acheté */}
           <section className="py-8">
             <UpSell
-              title="Produits similaires"
+              title="Les internautes ont aussi acheté"
               products={mockProduct.recommendations}
               seeAllHref="#"
             />
@@ -337,7 +360,7 @@ export default function DesktopLayout() {
           {/* Blog / ConseilCards */}
           <section className="py-4">
             <Carousel
-              title="Nos conseils"
+              title="Conseils Fnac"
               items={mockProduct.conseils}
               seeAllHref="#"
               renderItem={(conseil, i) => (
@@ -353,13 +376,33 @@ export default function DesktopLayout() {
             />
           </section>
 
-          {/* UpSell: Vous aimerez aussi */}
+          {/* UpSell: Vos derniers articles consultés */}
           <section className="py-8">
             <UpSell
-              title="Vous aimerez aussi"
+              title="Vos derniers articles consultés"
               products={mockProduct.recommendations.slice(0, 4)}
               seeAllHref="#"
             />
+          </section>
+
+          {/* Voir aussi */}
+          <section className="bg-surface-default px-14 py-6 border-t border-border-default">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-sm font-bold text-text-primary">Voir aussi :</span>
+              {['iPhone 17 Pro', 'iPhone 17 Pro Max', 'Smartphones Apple', 'Téléphones 5G', 'Meilleurs smartphones 2025'].map((link) => (
+                <a key={link} href="#" className="text-sm text-brand-primary hover:underline border border-border-default rounded-full px-3 py-1 hover:bg-surface-secondary transition-colors">
+                  {link}
+                </a>
+              ))}
+            </div>
+          </section>
+
+          {/* Informations financement */}
+          <section className="bg-surface-default px-14 py-6 border-t border-border-default">
+            <h3 className="text-sm font-bold text-text-primary mb-2">Informations financement</h3>
+            <p className="text-xs text-text-secondary leading-relaxed">
+              Offre de crédit réservée aux particuliers, sous réserve d'acceptation par Oney Bank. Oney Bank — SA au capital de 50 741 215 € — 34 avenue de Flandre 59 170 Croix — 546 380 197 RCS Lille Métropole — n° Orias 07 023 261. TAEG fixe 21,15% — Taux débiteur fixe annuel 21,15%. Exemple pour 1 329 € financés sur 32 mois sans apport : 32 mensualités de 53,48 €. Montant total dû : 1 711,36 €. Frais de dossier offerts.
+            </p>
           </section>
 
           {/* SEOBlock */}
@@ -397,6 +440,32 @@ export default function DesktopLayout() {
         </div>
 
       </main>
+
+      {/* ── Sticky bottom bar (desktop) ── */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-surface-default border-t border-border-default shadow-xl font-sans">
+        <div className="max-w-[1440px] mx-auto px-14 py-3 flex items-center gap-4">
+          {/* Thumbnail */}
+          <div className="w-12 h-12 bg-surface-secondary rounded-md flex-shrink-0 flex items-center justify-center overflow-hidden">
+            <span className="text-xs text-text-tertiary">img</span>
+          </div>
+          {/* Product info */}
+          <div className="flex flex-col flex-1 min-w-0">
+            <span className="text-xs text-text-secondary">Produit neuf</span>
+            <div className="flex items-baseline gap-2">
+              <span className="text-lg font-bold text-text-primary">1 329,00 €</span>
+              <span className="text-sm text-text-tertiary line-through">1 408,74 €</span>
+            </div>
+          </div>
+          {/* CTA */}
+          <button
+            className="bg-brand-primary text-neutral-950 font-bold text-base py-3 px-8 rounded-md hover:bg-brand-secondary transition-colors duration-200 flex-shrink-0"
+            onClick={() => {}}
+          >
+            Ajouter au panier
+          </button>
+        </div>
+      </div>
+
     </div>
   );
 }

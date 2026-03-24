@@ -4,7 +4,7 @@ import { CharacteristicBlock } from '../CharacteristicBlock/CharacteristicBlock'
 import { clsx } from 'clsx';
 
 export const LaboFnacBlock: React.FC<LaboFnacBlockProps> = ({
-  score, title = 'Test Labo Fnac', specs = [], pointsForts = [], className,
+  score, title = 'Test Labo Fnac', compareHref, specs = [], pointsForts = [], className,
 }) => (
   <div className={clsx('bg-surface-secondary rounded-md p-4 font-sans', className)}>
     <div className="flex items-center justify-between mb-4">
@@ -14,6 +14,14 @@ export const LaboFnacBlock: React.FC<LaboFnacBlockProps> = ({
         </div>
         <h3 className="text-lg font-bold text-text-primary">{title}</h3>
       </div>
+      {compareHref && (
+        <a href={compareHref} className="text-sm text-brand-primary hover:underline flex items-center gap-1 font-sans">
+          Voir notre comparatif de téléphones
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      )}
       {score !== undefined && (
         <div className="flex flex-col items-center justify-center w-16 h-16 rounded-full bg-brand-primary">
           <span className="text-2xl font-bold text-neutral-950">{score}</span>

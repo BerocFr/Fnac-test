@@ -6,7 +6,7 @@ export const mockProduct = {
   brand: 'Apple',
   sku: 'APL-IP17P-256-ORC',
   rating: 4.5,
-  reviewCount: 397,
+  reviewCount: 1989,
 
   images: [
     { alt: 'Apple iPhone 17 Pro - Vue principale', type: 'img' as const },
@@ -108,24 +108,20 @@ export const mockProduct = {
 
   accordions: [
     {
-      title: 'Description du produit',
-      content: 'L\'Apple iPhone 17 Pro redéfinit l\'excellence mobile avec sa puce A19 Pro, son écran Super Retina XDR de 6,3 pouces à 120 Hz et son système photo triple capteur 48 MP. Le Dynamic Island offre une expérience utilisateur unique et intuitive.',
-    },
-    {
-      title: 'Caractéristiques techniques',
+      title: 'Caractéristiques',
       content: 'Écran : 6,3" OLED 2556×1179px, 120Hz ProMotion | Processeur : Apple A19 Pro | RAM : 8 Go | Stockage : 256 Go | Batterie : 3 274 mAh, charge 30W | Photo : 48MP principal + 12MP ultra-grand-angle + 12MP téléobjectif 5x',
     },
     {
-      title: 'Compatibilité et connectivité',
+      title: 'Description',
+      content: 'L\'Apple iPhone 17 Pro redéfinit l\'excellence mobile avec sa puce A19 Pro, son écran Super Retina XDR de 6,3 pouces à 120 Hz et son système photo triple capteur 48 MP. Le Dynamic Island offre une expérience utilisateur unique et intuitive.',
+    },
+    {
+      title: 'Mot de la marque',
+      content: 'Apple repousse les limites de l\'innovation avec l\'iPhone 17 Pro. Conçu pour les professionnels de la photo et de la vidéo, il embarque les technologies les plus avancées dans un design premium en titane.',
+    },
+    {
+      title: 'Compatibilité',
       content: '5G | WiFi 7 | Bluetooth 5.3 | NFC | USB-C 3 (10 Gb/s) | eSIM | IP68 (6 mètres, 30 min)',
-    },
-    {
-      title: 'Contenu du coffret',
-      content: 'Smartphone Apple iPhone 17 Pro, câble USB-C vers USB-C, documentation.',
-    },
-    {
-      title: 'Garantie et services',
-      content: 'Garantie constructeur 1 an. AppleCare+ disponible. Service après-vente FNAC.',
     },
   ],
 
