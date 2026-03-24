@@ -1,4 +1,6 @@
 export interface FidProps {
-  points: number;
+  label: string;
+  startingPrice: string;
+  priceDescription: string;
   className?: string;
 }

@@ -92,7 +92,7 @@ export default function DesktopLayout() {
         <section className="flex flex-row gap-6 px-14">
 
           {/* ── LEFT COLUMN: sticky ── */}
-          <div className="flex flex-col gap-4 w-[400px] flex-shrink-0 sticky top-[120px] self-start">
+          <div className="flex flex-col gap-4 w-[765px] flex-shrink-0 sticky top-[120px] self-start">
             {/* Gallery: thumbnails left + main image */}
             <Gallery images={mockProduct.images} device="desktop" />
 
@@ -104,10 +104,10 @@ export default function DesktopLayout() {
           </div>
 
           {/* ── RIGHT COLUMN (middle): white cards, col gap-12 ── */}
-          <div className="flex flex-col gap-12 flex-1 min-w-0">
+          <div className="flex flex-col gap-12 w-[539px] flex-shrink-0">
 
             {/* ── Card 1 ── */}
-            <div className="bg-surface-default rounded-md p-6 flex flex-col gap-8">
+            <div className="bg-surface-default rounded-md p-6 flex flex-col gap-12">
 
               {/* Section: Title + Rating */}
               <div className="flex flex-col gap-8">
@@ -211,9 +211,14 @@ export default function DesktopLayout() {
             <div className="bg-surface-default rounded-md p-6 flex flex-col gap-8">
               <span className="text-xl font-bold text-text-primary">Comment l'obtenir ?</span>
 
-              <DeliveryBlock methods={mockProduct.deliveryMethods} />
-
-              <Fid points={mockProduct.fidPoints} />
+              <div className="flex flex-col gap-4">
+                <DeliveryBlock methods={mockProduct.deliveryMethods} />
+                <Fid
+                  label={mockProduct.fnacPlus.label}
+                  startingPrice={mockProduct.fnacPlus.startingPrice}
+                  priceDescription={mockProduct.fnacPlus.priceDescription}
+                />
+              </div>
 
               <ActionBlock
                 onAddToCart={() => {}}
@@ -223,27 +228,32 @@ export default function DesktopLayout() {
               />
             </div>
 
-            {/* ── Seconde Vie: 2 cards side by side ── */}
-            <div className="flex flex-row gap-2">
-              {/* Occasion card */}
-              <button className="flex-1 bg-surface-default rounded-md p-4 flex items-center justify-between hover:bg-surface-secondary transition-colors duration-200 border border-border-default">
-                <div className="flex flex-col gap-1 text-left">
-                  <span className="text-xs font-bold text-text-secondary uppercase tracking-wide">Occasion</span>
-                  <span className="text-sm text-text-primary">+ {mockProduct.occasionOffers.count} offres d'occasion à partir de <span className="font-bold">{mockProduct.occasionOffers.minPrice}</span></span>
+            {/* ── Seconde Vie: stacked rows ── */}
+            <div className="flex flex-col bg-surface-default rounded-md overflow-hidden">
+              {/* Row 1: FNAC 2NDE VIE */}
+              <button className="flex items-center gap-3 px-4 py-[18px] border-b border-border-default hover:bg-surface-secondary transition-colors duration-200 text-left w-full">
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <span className="inline-flex items-center gap-1 bg-[#E2001A] text-white text-[10px] font-bold px-2 py-0.5 rounded-sm whitespace-nowrap flex-shrink-0">
+                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+                    </svg>
+                    FNAC 2NDE VIE
+                  </span>
+                  <span className="text-sm text-text-primary">
+                    + {mockProduct.occasionOffers.count} offres d'occasion à partir de <strong>{mockProduct.occasionOffers.minPrice}</strong>
+                  </span>
                 </div>
                 <svg className="w-5 h-5 text-text-tertiary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
                 </svg>
               </button>
-
-              {/* Autres offres card */}
-              <button className="flex-1 bg-surface-default rounded-md p-4 flex items-center justify-between hover:bg-surface-secondary transition-colors duration-200 border border-border-default">
-                <div className="flex flex-col gap-1 text-left">
-                  <span className="text-xs font-bold text-text-secondary uppercase tracking-wide">Autres offres</span>
-                  <span className="text-sm text-text-primary">+ {mockProduct.otherOffers.count} autres offres à partir de <span className="font-bold">{mockProduct.otherOffers.minPrice}</span></span>
-                </div>
+              {/* Row 2: Autres offres */}
+              <button className="flex items-center gap-3 px-4 py-[18px] hover:bg-surface-secondary transition-colors duration-200 text-left w-full">
+                <span className="text-sm text-text-primary flex-1">
+                  + {mockProduct.otherOffers.count} autres offres à partir de <strong>{mockProduct.otherOffers.minPrice}</strong>
+                </span>
                 <svg className="w-5 h-5 text-text-tertiary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
                 </svg>
               </button>
             </div>

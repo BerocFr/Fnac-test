@@ -183,7 +183,11 @@ export default function MobileLayout() {
         {/* ── 4. ActionBlock card ── */}
         <div className="bg-surface-default rounded-md p-4 flex flex-col gap-6">
           <DeliveryBlock methods={mockProduct.deliveryMethods} />
-          <Fid points={mockProduct.fidPoints} />
+          <Fid
+            label={mockProduct.fnacPlus.label}
+            startingPrice={mockProduct.fnacPlus.startingPrice}
+            priceDescription={mockProduct.fnacPlus.priceDescription}
+          />
           <ActionBlock
             onAddToCart={() => {}}
             onBuyNow={() => {}}

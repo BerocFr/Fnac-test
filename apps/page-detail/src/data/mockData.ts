@@ -72,8 +72,13 @@ export const mockProduct = {
   deliveryMethods: [
     { type: 'store' as const, label: 'Retrait à Fnac Paris - St Lazare', price: 'Gratuit', status: ['En stock en rayon', 'Retrait 1h'] },
     { type: 'home' as const, label: 'Livraison pour 75012', price: 'À partir de 7,99 €', status: ['Dès le 12 février'] },
-    { type: 'fnacplus' as const, label: 'Livraison express gratuite sur des milliers de produits', price: 'Dès 9,99 €', priceDetail: '9,99 € la 1ère année puis 14,99 €/an' },
   ] satisfies DeliveryMethod[],
+
+  fnacPlus: {
+    label: 'Livraison express gratuite sur des milliers de produits',
+    startingPrice: '9,99 €',
+    priceDescription: '9,99 € la 1ère année puis 14,99 €/an',
+  },
 
   accessoriesTitle: 'Complétez avec un chargeur',
 
@@ -83,8 +88,6 @@ export const mockProduct = {
 
   occasionOffers: { count: 8, minPrice: '1 236,00 €' },
   otherOffers: { count: 6, minPrice: '1 288,99 €' },
-
-  fidPoints: 1329,
 
   laboScore: 9.0,
   laboSpecs: [
