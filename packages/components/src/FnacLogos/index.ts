@@ -1,0 +1,1 @@
+export { FnacLogos } from './FnacLogos';

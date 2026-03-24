@@ -1,0 +1,1 @@
+export { SubFooter } from './SubFooter';

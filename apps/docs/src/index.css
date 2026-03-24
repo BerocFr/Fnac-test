@@ -1,0 +1,15 @@
+@import '../../../packages/tokens/dist/tokens.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Roboto', system-ui, sans-serif;
+    background-color: var(--ds-color-surface-secondary, #f4f4f4);
+    color: var(--ds-color-text-primary, #231F20);
+    margin: 0;
+    padding: 0;
+  }
+}

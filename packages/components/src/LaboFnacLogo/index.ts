@@ -1,0 +1,1 @@
+export { LaboFnacLogo } from './LaboFnacLogo';

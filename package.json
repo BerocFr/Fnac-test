@@ -1,0 +1,18 @@
+{
+  "name": "fnac-design-system",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "tokens:sync": "node packages/tokens/scripts/sync-figma-tokens.mjs",
+    "build:tokens": "cd packages/tokens && node sd.config.mjs",
+    "build:components": "turbo run build --filter=@ds/components",
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "test": "turbo run test",
+    "storybook": "turbo run storybook --filter=docs",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0"
+  }
+}
